@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "590458402776",
+    "project_id": "skillbook-b5099",
+    "storage_bucket": "skillbook-b5099.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590458402776:android:555bc56a0b88b01c6724ad",
+        "android_client_info": {
+          "package_name": "com.splanes.apps.skillbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590458402776-a295r0s6ngl7p2v1b2hpfnu5r9gutj2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO6RzS6hODvq-SxEIUU-Yhs3I_h87pwco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590458402776-a295r0s6ngl7p2v1b2hpfnu5r9gutj2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
