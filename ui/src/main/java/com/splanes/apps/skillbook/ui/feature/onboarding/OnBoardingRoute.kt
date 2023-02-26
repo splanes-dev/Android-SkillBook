@@ -1,6 +1,7 @@
 package com.splanes.apps.skillbook.ui.feature.onboarding
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
@@ -10,6 +11,15 @@ fun OnBoardingRoute(
     onNavToDashboard: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiSideEffect by viewModel.uiSideEffect.collectAsStateWithLifecycle(initialValue = null)
+
+    LaunchedEffect(uiSideEffect) {
+        when (uiSideEffect) {
+            OnBoardingUiSideEffect.NavToDashboard -> onNavToDashboard()
+            null -> { /* Nothing to do here */
+            }
+        }
+    }
 
     OnBoardingRoute(
         uiState = uiState,
@@ -29,7 +39,7 @@ fun OnBoardingRoute(
                 onFinishOnBoarding = onFinishOnBoarding
             )
 
-        OnBoardingUiState.Loading ->
-            OnBoardingLoadingScreen()
+        is OnBoardingUiState.Loading ->
+            OnBoardingLoadingScreen(uiState = uiState)
     }
 }
