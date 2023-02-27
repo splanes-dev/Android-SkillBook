@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="oops">Oops</string>
+    <string name="generic_error_description">Whoa… Seems that something went wrong. Could you try again later please?</string>
+</resources>

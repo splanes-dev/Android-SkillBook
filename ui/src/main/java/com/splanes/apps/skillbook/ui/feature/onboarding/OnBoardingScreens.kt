@@ -1,9 +1,11 @@
 package com.splanes.apps.skillbook.ui.feature.onboarding
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -32,7 +34,29 @@ fun OnBoardingLoadingScreen(
     uiState: OnBoardingUiState.Loading
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
-        CircularProgressIndicator()
+        Crossfade(targetState = uiState.error) { err ->
+            if (err != null) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.oops),
+                        style = TypographyScheme.headlineMedium
+                    )
+
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    Text(
+                        text = stringResource(id = R.string.generic_error_description),
+                        style = TypographyScheme.titleMedium
+                    )
+                }
+            } else {
+                CircularProgressIndicator()
+            }
+        }
     }
 }
 

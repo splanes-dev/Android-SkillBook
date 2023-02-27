@@ -6,10 +6,8 @@ import com.splanes.apps.skillbook.ui.common.BaseViewModel
 import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
@@ -28,7 +26,8 @@ class OnBoardingViewModel @Inject constructor(
     private val _uiSideEffect: MutableStateFlow<OnBoardingUiSideEffect?> =
         MutableStateFlow(null)
 
-    val uiSideEffect: Flow<OnBoardingUiSideEffect> = _uiSideEffect.filterNotNull()
+    val uiSideEffect: StateFlow<OnBoardingUiSideEffect?> = _uiSideEffect
+        .eagerly(null)
 
     init {
         isOnBoardingVisible()
