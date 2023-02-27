@@ -4,6 +4,7 @@ import com.splanes.apps.skillbook.domain.common.error.KnownException
 import com.splanes.apps.skillbook.domain.feature.onboarding.usecase.IsOnBoardingVisibleUseCase
 import com.splanes.apps.skillbook.ui.common.BaseViewModel
 import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiData
+import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiPages
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -42,7 +43,7 @@ class OnBoardingViewModel @Inject constructor(
                         viewModelState.update { state ->
                             state.copy(
                                 isLoading = false,
-                                onBoardingData = emptyList()
+                                onBoardingData = OnBoardingUiPages
                             )
                         }
                     } else {

@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="start">Start</string>
+    <string name="onboarding_welcome_page_title">Welcome!</string>
+    <string name="onboarding_welcome_page_description">
+        I\'m Sergi Planes and I\'m glad to present my resume in a different way than usually.\n
+        Tired to review always the same CV formats? I hope you will enjoy this creative way to show
+        up my aptitudes, studies and much more.
+    </string>
+    <string name="onboarding_app_brief_page_title">About SkillBook App</string>
+    <string name="onboarding_app_brief_page_description">
+        This App is aimed to provide the same info that you could find in a traditional CV such as expertise,
+        hard and soft skills or studies, but just shown in a more funny format.
+    </string>
+    <string name="onboarding__page_title"></string>
+    <string name="onboarding__page_description"></string>
 </resources>
