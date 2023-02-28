@@ -2,7 +2,7 @@
 android-gradle = "8.1.0-alpha06"
 android-kotlin = "1.9.0"
 android-splashscreen = "1.0.0"
-android-dagger-hilt = "2.42"
+android-dagger-hilt = "2.45"
 android-dagger-hilt-compose_navigation = "1.0.0"
 junit-unit = "4.13.2"
 mockk = "1.12.5"
