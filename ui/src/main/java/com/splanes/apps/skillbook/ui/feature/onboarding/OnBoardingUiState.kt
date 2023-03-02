@@ -1,7 +1,7 @@
 package com.splanes.apps.skillbook.ui.feature.onboarding
 
 import com.splanes.apps.skillbook.domain.common.error.KnownException
-import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiData
+import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingPageVisuals
 
 sealed interface OnBoardingUiState {
 
@@ -11,7 +11,7 @@ sealed interface OnBoardingUiState {
 
     data class DataLoaded(
         val error: KnownException? = null,
-        val pages: List<OnBoardingUiData> = emptyList()
+        val pages: List<OnBoardingPageVisuals> = emptyList()
     ) : OnBoardingUiState
 }
 

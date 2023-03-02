@@ -2,8 +2,8 @@ package com.splanes.apps.skillbook.ui.feature.onboarding
 
 import com.splanes.apps.skillbook.domain.common.error.KnownException
 import com.splanes.apps.skillbook.domain.feature.onboarding.usecase.IsOnBoardingVisibleUseCase
-import com.splanes.apps.skillbook.ui.common.BaseViewModel
-import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiData
+import com.splanes.apps.skillbook.ui.common.base.BaseViewModel
+import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingPageVisuals
 import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiPages
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -67,7 +67,7 @@ class OnBoardingViewModel @Inject constructor(
     data class ViewModelState(
         val isLoading: Boolean = true,
         val error: KnownException? = null,
-        val onBoardingData: List<OnBoardingUiData> = emptyList()
+        val onBoardingData: List<OnBoardingPageVisuals> = emptyList()
     ) {
         fun uiState(): OnBoardingUiState =
             when {

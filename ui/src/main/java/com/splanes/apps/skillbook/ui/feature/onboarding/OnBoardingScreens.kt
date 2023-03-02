@@ -5,16 +5,18 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +28,8 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.splanes.apps.skillbook.ui.R
+import com.splanes.apps.skillbook.ui.feature.onboarding.components.OnBoardingPage
+import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiPages
 import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
 import com.splanes.apps.skillbook.ui.theme.typographies.TypographyScheme
 
@@ -69,39 +73,32 @@ fun OnBoardingPagerScreen(
     val pages = uiState.pages
     val pageState = rememberPagerState()
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.surface),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         HorizontalPager(
+            modifier = Modifier.weight(1f),
             state = pageState,
             count = pages.count()
         ) { index ->
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = stringResource(id = pages[index].title),
-                    style = TypographyScheme.headlineMedium
+            Column {
+                OnBoardingPage(
+                    modifier = Modifier.weight(1f),
+                    visible = pageState.currentPage == index,
+                    visuals = pages[index]
                 )
-
-                Spacer(modifier = Modifier.height(32.dp))
-
-                Text(
-                    text = stringResource(id = pages[index].description),
-                    style = TypographyScheme.titleSmall
-                )
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                HorizontalPagerIndicator(pagerState = pageState)
 
                 AnimatedVisibility(
                     visible = index == pages.lastIndex,
                     enter = expandVertically(animationSpec = tween(durationMillis = 500)),
                     exit = shrinkVertically(animationSpec = tween(durationMillis = 500))
                 ) {
+                    Spacer(modifier = Modifier.weight(1f))
+
                     Button(onClick = onFinishOnBoarding) {
                         Text(
                             text = stringResource(id = R.string.start),
@@ -111,6 +108,15 @@ fun OnBoardingPagerScreen(
                 }
             }
         }
+
+        HorizontalPagerIndicator(
+            modifier = Modifier.wrapContentSize(),
+            pagerState = pageState,
+            activeColor = MaterialTheme.colorScheme.primary,
+            inactiveColor = MaterialTheme.colorScheme.onSurface
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }
 
@@ -129,7 +135,7 @@ private fun OnBoardingLoadingScreenPreview() {
 private fun OnBoardingPagerScreenPreview() {
     SkillBookTheme {
         OnBoardingPagerScreen(
-            uiState = OnBoardingUiState.DataLoaded(),
+            uiState = OnBoardingUiState.DataLoaded(pages = OnBoardingUiPages),
             onFinishOnBoarding = {}
         )
     }

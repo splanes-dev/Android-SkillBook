@@ -5,7 +5,7 @@
         <activity
             android:name="com.splanes.apps.skillbook.ui.feature.main.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.SplashScreen">
+            android:theme="@style/Theme.SkillBook.SplashScreen">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

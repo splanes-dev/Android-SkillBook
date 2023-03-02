@@ -1,4 +1,4 @@
-package com.splanes.apps.skillbook.ui.common
+package com.splanes.apps.skillbook.ui.common.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
