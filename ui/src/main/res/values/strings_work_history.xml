@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="work_status_open_offers_name">Open to offers</string>
+    <string name="work_status_open_offers_description">
+        Not actively looking for a change but I\'m open to listen opportunities
+    </string>
+    <string name="work_status_open_change_name">Open to change</string>
+    <string name="work_status_open_change_description">
+        I\'m looking for a change, ready to handle new challenges!
+    </string>
+    <string name="work_status_close_change_name">Not open to change</string>
+    <string name="work_status_close_change_description">
+        Unfortunately, right now I\'m not looking for a change but please, keep in touch for future opportunities.
+    </string>
+</resources>

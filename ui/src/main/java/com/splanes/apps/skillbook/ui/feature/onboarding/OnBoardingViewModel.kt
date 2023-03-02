@@ -64,7 +64,7 @@ class OnBoardingViewModel @Inject constructor(
     fun onFinishOnBoarding() {
     }
 
-    data class ViewModelState(
+    private data class ViewModelState(
         val isLoading: Boolean = true,
         val error: KnownException? = null,
         val onBoardingData: List<OnBoardingPageVisuals> = emptyList()
