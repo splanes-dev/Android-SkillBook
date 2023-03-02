@@ -31,14 +31,13 @@ import com.splanes.apps.skillbook.ui.R
 import com.splanes.apps.skillbook.ui.feature.onboarding.components.OnBoardingPage
 import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiPages
 import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
-import com.splanes.apps.skillbook.ui.theme.typographies.TypographyScheme
 
 @Composable
 fun OnBoardingLoadingScreen(
     uiState: OnBoardingUiState.Loading
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
-        Crossfade(targetState = uiState.error) { err ->
+        Crossfade(targetState = uiState.error, label = "OnBoardingLoadingScreen") { err ->
             if (err != null) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -47,14 +46,14 @@ fun OnBoardingLoadingScreen(
                 ) {
                     Text(
                         text = stringResource(id = R.string.oops),
-                        style = TypographyScheme.headlineMedium
+                        style = MaterialTheme.typography.headlineMedium
                     )
 
                     Spacer(modifier = Modifier.height(32.dp))
 
                     Text(
                         text = stringResource(id = R.string.generic_error_description),
-                        style = TypographyScheme.titleMedium
+                        style = MaterialTheme.typography.titleMedium
                     )
                 }
             } else {
@@ -102,7 +101,7 @@ fun OnBoardingPagerScreen(
                     Button(onClick = onFinishOnBoarding) {
                         Text(
                             text = stringResource(id = R.string.start),
-                            style = TypographyScheme.titleSmall
+                            style = MaterialTheme.typography.titleSmall
                         )
                     }
                 }

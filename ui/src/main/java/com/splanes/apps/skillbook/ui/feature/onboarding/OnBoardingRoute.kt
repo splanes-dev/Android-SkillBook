@@ -34,7 +34,7 @@ fun OnBoardingRoute(
     uiState: OnBoardingUiState,
     onFinishOnBoarding: () -> Unit
 ) {
-    Crossfade(targetState = uiState) { state ->
+    Crossfade(targetState = uiState, label = "OnBoardingRoute") { state ->
         when (state) {
             is OnBoardingUiState.DataLoaded ->
                 OnBoardingPagerScreen(

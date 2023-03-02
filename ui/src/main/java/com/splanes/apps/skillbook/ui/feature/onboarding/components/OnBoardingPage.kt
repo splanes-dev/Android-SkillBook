@@ -20,7 +20,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingPageVisuals
-import com.splanes.apps.skillbook.ui.theme.typographies.TypographyScheme
 
 @Composable
 fun OnBoardingPage(
@@ -48,7 +47,7 @@ fun OnBoardingPage(
                 .wrapContentSize()
                 .graphicsLayer(alpha = titleAlpha),
             text = stringResource(id = visuals.title),
-            style = TypographyScheme.displayMedium,
+            style = MaterialTheme.typography.displayMedium,
             color = MaterialTheme.colorScheme.onSurface
         )
 
@@ -59,7 +58,7 @@ fun OnBoardingPage(
                 .fillMaxWidth()
                 .graphicsLayer(alpha = descriptionAlpha),
             text = stringResource(id = visuals.description),
-            style = TypographyScheme.titleLarge,
+            style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Justify
         )

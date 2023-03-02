@@ -20,12 +20,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.splanes.apps.skillbook.ui.R
-import com.splanes.apps.skillbook.ui.theme.typographies.TypographyScheme
+import com.splanes.apps.skillbook.ui.feature.profile.ProfileRoute
+import com.splanes.apps.skillbook.ui.feature.profile.ProfileViewModel
 
 @Composable
 fun DashboardNavGraph(
@@ -46,6 +48,8 @@ fun DashboardNavGraph(
             composable(DashboardDestinations.Jobs) {
             }
             composable(DashboardDestinations.Profile) {
+                val viewModel: ProfileViewModel = hiltViewModel()
+                ProfileRoute(viewModel)
             }
             composable(DashboardDestinations.HardSkills) {
             }
@@ -103,7 +107,7 @@ fun DashboardNavGraph(
                     label = {
                         Text(
                             text = label,
-                            style = TypographyScheme.labelSmall.copy(
+                            style = MaterialTheme.typography.labelSmall.copy(
                                 fontWeight = FontWeight.Medium
                             ),
                             color = MaterialTheme.colorScheme.onPrimaryContainer,

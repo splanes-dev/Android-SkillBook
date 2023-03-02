@@ -20,9 +20,9 @@ fun ProfileRoute(
 fun ProfileRoute(
     uiState: ProfileUiState
 ) {
-    Crossfade(uiState) { state ->
+    Crossfade(targetState = uiState, label = "ProfileRoute") { state ->
         when (state) {
-            is ProfileUiState.Profile -> TODO()
+            is ProfileUiState.Profile -> ProfileScreen(state)
         }
     }
 }
