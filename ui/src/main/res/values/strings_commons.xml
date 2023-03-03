@@ -8,4 +8,12 @@
     <string name="soft_skills">Soft Skills</string>
     <string name="hard_skills">Hard Skills</string>
     <string name="profile">Profile</string>
+    <string name="cv_photo_content_description">Resume photo</string>
+    <string name="expanded_description">Expanded</string>
+    <string name="collapsed_description">Collapsed</string>
+    <string name="location_description">Email</string>
+    <string name="phone_description">Phone</string>
+    <string name="mail_description">Email</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="github">GitHub</string>
 </resources>
