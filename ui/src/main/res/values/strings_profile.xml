@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="profile_contact_section_title">Contact information</string>
+    <string name="profile_contact_section_title">Contact</string>
     <string name="profile_contact_mail_subject">Contact from SkillBook</string>
+    <string name="profile_current_job">Current job</string>
+    <string name="profile_last_job">Last job</string>
+    <string name="profile_about_me">About me</string>
+    <string name="profile_about_me_subtitle">Let\s explain a few things about me to know me better!</string>
 </resources>

@@ -4,13 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
-import androidx.annotation.DrawableRes
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,8 +22,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ExpandLess
 import androidx.compose.material.icons.rounded.LocationOn
 import androidx.compose.material.icons.rounded.MailOutline
 import androidx.compose.material.icons.rounded.Phone
@@ -36,16 +39,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.splanes.apps.skillbook.ui.R
+import com.splanes.apps.skillbook.ui.common.utils.ImageResource
 import com.splanes.apps.skillbook.ui.common.utils.rememberStateOf
+import com.splanes.apps.skillbook.ui.components.expandable.ExpandCollapseArrow
 import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileContactVisuals
 import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
 
@@ -53,20 +58,21 @@ import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
 @Composable
 fun ProfileContact(
     visuals: ProfileContactVisuals,
-    modifier: Modifier = Modifier
+    expanded: Boolean,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
-    var expanded by rememberStateOf(true)
-    val rotation by animateFloatAsState(
-        targetValue = if (expanded) 0f else 180f,
-        label = "icon rotation"
+    val containerAlpha by animateFloatAsState(
+        targetValue = if (expanded) .5f else .2f,
+        label = "container alpha"
     )
     val items = visuals.mapToProfileItems(LocalContext.current)
 
     Surface(
         modifier = modifier,
         shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = .33f),
-        onClick = { expanded = !expanded }
+        color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = containerAlpha),
+        onClick = onClick
     ) {
         Column(
             modifier = Modifier
@@ -74,36 +80,21 @@ fun ProfileContact(
                 .wrapContentHeight()
                 .padding(horizontal = 16.dp, vertical = 24.dp)
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(id = R.string.profile_contact_section_title),
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer
-                )
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                Icon(
-                    modifier = Modifier.rotate(rotation),
-                    imageVector = Icons.Rounded.ExpandLess,
-                    contentDescription = stringResource(
-                        id = if (expanded) {
-                            R.string.expanded_description
-                        } else {
-                            R.string.collapsed_description
-                        }
-                    ),
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer
-                )
-            }
+            ProfileHeader(
+                expanded = expanded,
+                name = visuals.name
+            )
 
             AnimatedVisibility(
                 visible = expanded,
-                enter = expandVertically(animationSpec = spring(), expandFrom = Alignment.Top),
-                exit = shrinkVertically(animationSpec = tween(), shrinkTowards = Alignment.Top)
+                enter = expandVertically(
+                    animationSpec = tween(durationMillis = 750),
+                    expandFrom = Alignment.Top
+                ),
+                exit = shrinkVertically(
+                    animationSpec = tween(durationMillis = 750),
+                    shrinkTowards = Alignment.Top
+                )
             ) {
                 Column {
                     Spacer(modifier = Modifier.height(16.dp))
@@ -144,17 +135,80 @@ fun ProfileContact(
     }
 }
 
+@Composable
+private fun ProfileImage(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier.wrapContentSize(),
+        shape = CircleShape
+    ) {
+        Image(
+            modifier = Modifier.size(125.dp),
+            painter = painterResource(id = R.drawable.cv_photo),
+            contentDescription = stringResource(
+                id = R.string.cv_photo_content_description
+            ),
+            contentScale = ContentScale.Crop
+        )
+    }
+}
+
+@Composable
+private fun ProfileName(name: String) {
+    Text(
+        modifier = Modifier.fillMaxWidth(),
+        text = name,
+        style = MaterialTheme.typography.headlineMedium,
+        color = MaterialTheme.colorScheme.onPrimaryContainer,
+        textAlign = TextAlign.Center
+    )
+}
+
+@OptIn(ExperimentalAnimationApi::class)
+@Composable
+private fun ProfileHeader(
+    expanded: Boolean,
+    name: String
+) {
+    Box(modifier = Modifier.fillMaxWidth()) {
+        AnimatedContent(targetState = expanded, label = "anim profile header") { isExpanded ->
+            if (isExpanded) {
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .padding(end = 36.dp)
+                ) {
+                    ProfileImage(modifier = Modifier.align(Alignment.CenterHorizontally))
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    ProfileName(name = name)
+                }
+            } else {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 36.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    ProfileImage()
+
+                    Spacer(modifier = Modifier.width(16.dp))
+
+                    ProfileName(name = name)
+                }
+            }
+        }
+
+        ExpandCollapseArrow(modifier = Modifier.align(Alignment.TopEnd), expanded = expanded)
+    }
+}
+
 data class ProfileContactItem(
     val name: String,
     val iconContentDescription: String,
     val icon: ImageResource,
     val onClick: () -> Unit
 )
-
-sealed class ImageResource {
-    data class Vector(val imageVector: ImageVector) : ImageResource()
-    data class Assets(@DrawableRes val res: Int) : ImageResource()
-}
 
 private fun ProfileContactVisuals.mapToProfileItems(context: Context) = listOf(
     ProfileContactItem(
@@ -224,6 +278,7 @@ private fun ProfileContactVisuals.mapToProfileItems(context: Context) = listOf(
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 private fun ProfileContactPreview() {
     SkillBookTheme {
+        var expanded by rememberStateOf(value = true)
         ProfileContact(
             visuals = ProfileContactVisuals(
                 location = "Barcelona, Spain",
@@ -232,7 +287,9 @@ private fun ProfileContactPreview() {
                 phone = "628131871",
                 linkedInUrl = "https://www.linkedin.com/in/sergi-planes-tor-8318a998/",
                 githubUrl = "https://www.github.com/splanes-dev"
-            )
+            ),
+            expanded = expanded,
+            onClick = { expanded = !expanded }
         )
     }
 }

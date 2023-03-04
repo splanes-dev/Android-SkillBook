@@ -16,4 +16,5 @@
     <string name="mail_description">Email</string>
     <string name="linkedin">LinkedIn</string>
     <string name="github">GitHub</string>
+    <string name="present">Present</string>
 </resources>
