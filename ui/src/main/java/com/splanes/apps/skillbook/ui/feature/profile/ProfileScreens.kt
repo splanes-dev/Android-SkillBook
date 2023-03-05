@@ -73,6 +73,7 @@ fun ProfileScreen(
                     .fillMaxSize()
                     .verticalScroll(scrollState)
                     .padding(innerPaddingValues)
+                    .padding(top = 16.dp)
             ) {
                 ProfileContact(
                     modifier = Modifier
