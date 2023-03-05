@@ -1,15 +1,11 @@
 package com.splanes.apps.skillbook.domain.feature.profile.model
 
 import android.os.Parcelable
+import com.splanes.apps.skillbook.domain.feature.workhistory.model.WorkHistoryEntryData
 import kotlinx.parcelize.Parcelize
 
-sealed class ProfileCurrentStatusData : Parcelable {
-    @Parcelize
-    object CloseToChange : ProfileCurrentStatusData()
-
-    @Parcelize
-    object OpenToChange : ProfileCurrentStatusData()
-
-    @Parcelize
-    object OpenToOffers : ProfileCurrentStatusData()
-}
+@Parcelize
+data class ProfileCurrentStatusData(
+    val work: WorkHistoryEntryData,
+    val status: ProfileCurrentStatus
+) : Parcelable

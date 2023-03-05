@@ -21,6 +21,7 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "google-firebase-bom" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
 google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+google-firebase-storage = { module = "com.google.firebase:firebase-storage-ktx" }
 #Gson
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 

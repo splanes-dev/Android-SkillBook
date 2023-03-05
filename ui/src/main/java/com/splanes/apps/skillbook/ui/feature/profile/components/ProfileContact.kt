@@ -11,7 +11,6 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -47,6 +46,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.splanes.apps.skillbook.ui.R
 import com.splanes.apps.skillbook.ui.common.utils.ImageResource
 import com.splanes.apps.skillbook.ui.common.utils.rememberStateOf
@@ -82,7 +82,8 @@ fun ProfileContact(
         ) {
             ProfileHeader(
                 expanded = expanded,
-                name = visuals.name
+                name = visuals.name,
+                profileUrl = visuals.imageUrl
             )
 
             AnimatedVisibility(
@@ -136,14 +137,14 @@ fun ProfileContact(
 }
 
 @Composable
-private fun ProfileImage(modifier: Modifier = Modifier) {
+private fun ProfileImage(url: String, modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier.wrapContentSize(),
         shape = CircleShape
     ) {
-        Image(
+        AsyncImage(
             modifier = Modifier.size(125.dp),
-            painter = painterResource(id = R.drawable.cv_photo),
+            model = url,
             contentDescription = stringResource(
                 id = R.string.cv_photo_content_description
             ),
@@ -167,7 +168,8 @@ private fun ProfileName(name: String) {
 @Composable
 private fun ProfileHeader(
     expanded: Boolean,
-    name: String
+    name: String,
+    profileUrl: String
 ) {
     Box(modifier = Modifier.fillMaxWidth()) {
         AnimatedContent(targetState = expanded, label = "anim profile header") { isExpanded ->
@@ -177,7 +179,10 @@ private fun ProfileHeader(
                         .align(Alignment.Center)
                         .padding(end = 36.dp)
                 ) {
-                    ProfileImage(modifier = Modifier.align(Alignment.CenterHorizontally))
+                    ProfileImage(
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        url = profileUrl
+                    )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
@@ -190,7 +195,7 @@ private fun ProfileHeader(
                         .padding(end = 36.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    ProfileImage()
+                    ProfileImage(profileUrl)
 
                     Spacer(modifier = Modifier.width(16.dp))
 

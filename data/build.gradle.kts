@@ -25,4 +25,5 @@ android {
 dependencies {
     implementation(projects.domain)
     implementation(baseLibs.gson)
+    implementation(baseLibs.google.firebase.storage)
 }
