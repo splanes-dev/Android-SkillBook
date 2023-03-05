@@ -28,6 +28,8 @@ import androidx.navigation.compose.composable
 import com.splanes.apps.skillbook.ui.R
 import com.splanes.apps.skillbook.ui.feature.profile.ProfileRoute
 import com.splanes.apps.skillbook.ui.feature.profile.ProfileViewModel
+import com.splanes.apps.skillbook.ui.feature.studies.StudiesRoute
+import com.splanes.apps.skillbook.ui.feature.studies.StudiesViewModel
 
 @Composable
 fun DashboardNavGraph(
@@ -44,6 +46,8 @@ fun DashboardNavGraph(
             startDestination = startDestination
         ) {
             composable(DashboardDestinations.Studies) {
+                val viewModel: StudiesViewModel = hiltViewModel()
+                StudiesRoute(viewModel)
             }
             composable(DashboardDestinations.Jobs) {
             }
