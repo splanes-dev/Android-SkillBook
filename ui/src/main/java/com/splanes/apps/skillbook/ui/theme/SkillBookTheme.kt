@@ -1,6 +1,7 @@
 package com.splanes.apps.skillbook.ui.theme
 
 import android.app.Activity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -17,7 +18,7 @@ import com.splanes.apps.skillbook.ui.theme.typographies.TypographyScheme
 
 @Composable
 fun SkillBookTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = isDarkMode(),
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
@@ -44,4 +45,11 @@ fun SkillBookTheme(
         typography = TypographyScheme,
         content = content
     )
+}
+
+@Composable
+fun isDarkMode() = when (AppCompatDelegate.getDefaultNightMode()) {
+    AppCompatDelegate.MODE_NIGHT_NO -> false
+    AppCompatDelegate.MODE_NIGHT_YES -> true
+    else -> isSystemInDarkTheme()
 }
