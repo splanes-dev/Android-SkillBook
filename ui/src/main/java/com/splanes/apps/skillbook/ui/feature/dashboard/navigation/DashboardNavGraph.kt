@@ -30,6 +30,8 @@ import com.splanes.apps.skillbook.ui.feature.profile.ProfileRoute
 import com.splanes.apps.skillbook.ui.feature.profile.ProfileViewModel
 import com.splanes.apps.skillbook.ui.feature.studies.StudiesRoute
 import com.splanes.apps.skillbook.ui.feature.studies.StudiesViewModel
+import com.splanes.apps.skillbook.ui.feature.workhistory.WorkHistoryRoute
+import com.splanes.apps.skillbook.ui.feature.workhistory.WorkHistoryViewModel
 
 @Composable
 fun DashboardNavGraph(
@@ -50,6 +52,8 @@ fun DashboardNavGraph(
                 StudiesRoute(viewModel)
             }
             composable(DashboardDestinations.Jobs) {
+                val viewModel: WorkHistoryViewModel = hiltViewModel()
+                WorkHistoryRoute(viewModel)
             }
             composable(DashboardDestinations.Profile) {
                 val viewModel: ProfileViewModel = hiltViewModel()
