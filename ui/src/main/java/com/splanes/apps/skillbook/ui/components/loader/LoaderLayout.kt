@@ -1,6 +1,5 @@
 package com.splanes.apps.skillbook.ui.components.loader
 
-import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -18,8 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.common.utils.rememberStateOf
 import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
 import kotlin.time.Duration.Companion.seconds
@@ -51,8 +49,7 @@ fun LoaderLayout(
 }
 
 @Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
+@UiPreview
 private fun LoaderLayoutPreview() {
     SkillBookTheme {
         var visible by rememberStateOf(false)

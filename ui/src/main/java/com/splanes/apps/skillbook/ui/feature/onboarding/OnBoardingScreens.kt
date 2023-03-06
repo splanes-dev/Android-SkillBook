@@ -21,13 +21,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.splanes.apps.skillbook.ui.R
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.feature.onboarding.components.OnBoardingPage
 import com.splanes.apps.skillbook.ui.feature.onboarding.model.OnBoardingUiPages
 import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
@@ -120,7 +120,7 @@ fun OnBoardingPagerScreen(
 }
 
 @Composable
-@Preview
+@UiPreview
 private fun OnBoardingLoadingScreenPreview() {
     SkillBookTheme {
         OnBoardingLoadingScreen(
@@ -130,7 +130,7 @@ private fun OnBoardingLoadingScreenPreview() {
 }
 
 @Composable
-@Preview
+@UiPreview
 private fun OnBoardingPagerScreenPreview() {
     SkillBookTheme {
         OnBoardingPagerScreen(

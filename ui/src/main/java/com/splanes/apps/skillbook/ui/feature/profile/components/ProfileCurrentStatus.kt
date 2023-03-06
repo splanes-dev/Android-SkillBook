@@ -29,10 +29,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.splanes.apps.skillbook.ui.R
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.common.utils.rememberStateOf
 import com.splanes.apps.skillbook.ui.components.expandable.ExpandCollapseArrow
 import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileCurrentStatusVisuals
@@ -216,8 +216,7 @@ private fun WorkSearchStateVisuals.foregroundColor() = MaterialTheme.colorScheme
 }
 
 @Composable
-@Preview
-@Preview
+@UiPreview
 private fun ProfileCurrentStatusPreview() {
     SkillBookTheme {
         var expanded by rememberStateOf(false)

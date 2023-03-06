@@ -1,6 +1,5 @@
 package com.splanes.apps.skillbook.ui.components.topbar
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -9,9 +8,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,8 +44,7 @@ fun SkillBookTopBar(
 }
 
 @Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
+@UiPreview
 private fun SkillBookTopBarPreview() {
     SkillBookTheme {
         SkillBookTopBar(title = "Profile")

@@ -1,6 +1,5 @@
 package com.splanes.apps.skillbook.ui.feature.profile.components
 
-import android.content.res.Configuration
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -25,10 +24,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.splanes.apps.skillbook.ui.R
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.common.utils.rememberStateOf
 import com.splanes.apps.skillbook.ui.components.expandable.ExpandCollapseArrow
 import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileAboutMeVisuals
@@ -138,8 +136,7 @@ private fun AboutMeDescription(description: String, expanded: Boolean) {
 }
 
 @Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
+@UiPreview
 private fun ProfileAboutMePreview() {
     SkillBookTheme {
         var expanded by rememberStateOf(false)

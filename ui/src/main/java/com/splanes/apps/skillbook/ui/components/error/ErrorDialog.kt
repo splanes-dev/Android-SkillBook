@@ -1,6 +1,5 @@
 package com.splanes.apps.skillbook.ui.components.error
 
-import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandIn
@@ -26,8 +25,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
@@ -35,6 +32,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.splanes.apps.skillbook.ui.R
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.components.error.model.ErrorDialogVisuals
 import com.splanes.apps.skillbook.ui.theme.SkillBookTheme
 import kotlinx.coroutines.launch
@@ -124,8 +122,7 @@ class ErrorDialogState {
 fun rememberErrorDialogState() = remember { ErrorDialogState() }
 
 @Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@UiPreview
 private fun ErrorDialogPreview() {
     SkillBookTheme {
         val scope = rememberCoroutineScope()

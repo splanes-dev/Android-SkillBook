@@ -1,6 +1,5 @@
 package com.splanes.apps.skillbook.ui.feature.profile
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,10 +15,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.splanes.apps.skillbook.ui.R
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.common.utils.rememberStateOf
 import com.splanes.apps.skillbook.ui.components.error.ErrorDialog
 import com.splanes.apps.skillbook.ui.components.error.rememberErrorDialogState
@@ -113,8 +111,7 @@ fun ProfileScreen(
 }
 
 @Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@UiPreview
 private fun ProfileScreenPreview() {
     SkillBookTheme {
         ProfileScreen(

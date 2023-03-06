@@ -2,7 +2,6 @@ package com.splanes.apps.skillbook.ui.feature.profile.components
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.net.Uri
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
@@ -43,12 +42,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.splanes.apps.skillbook.ui.R
 import com.splanes.apps.skillbook.ui.common.utils.ImageResource
+import com.splanes.apps.skillbook.ui.common.utils.UiPreview
 import com.splanes.apps.skillbook.ui.common.utils.rememberStateOf
 import com.splanes.apps.skillbook.ui.components.expandable.ExpandCollapseArrow
 import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileContactVisuals
@@ -279,8 +277,7 @@ private fun ProfileContactVisuals.mapToProfileItems(context: Context) = listOf(
 )
 
 @Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
+@UiPreview
 private fun ProfileContactPreview() {
     SkillBookTheme {
         var expanded by rememberStateOf(value = true)
