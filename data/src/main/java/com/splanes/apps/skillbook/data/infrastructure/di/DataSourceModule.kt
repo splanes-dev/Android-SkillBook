@@ -6,6 +6,10 @@ import com.splanes.apps.skillbook.data.feature.profile.datasource.ProfileCacheDa
 import com.splanes.apps.skillbook.data.feature.profile.datasource.ProfileRemoteDataSource
 import com.splanes.apps.skillbook.data.feature.profile.datasource.impl.ProfileCache
 import com.splanes.apps.skillbook.data.feature.profile.datasource.impl.ProfileRemoteDataSourceImpl
+import com.splanes.apps.skillbook.data.feature.studies.datasource.StudiesCacheDataSource
+import com.splanes.apps.skillbook.data.feature.studies.datasource.StudiesRemoteDataSource
+import com.splanes.apps.skillbook.data.feature.studies.datasource.impl.StudiesCache
+import com.splanes.apps.skillbook.data.feature.studies.datasource.impl.StudiesRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -25,4 +29,12 @@ abstract class DataSourceModule {
     abstract fun bindProfileRemoteDataSource(
         impl: ProfileRemoteDataSourceImpl
     ): ProfileRemoteDataSource
+
+    @Binds
+    abstract fun bindStudiesCacheDataSource(cache: StudiesCache): StudiesCacheDataSource
+
+    @Binds
+    abstract fun bindStudiesRemoteDataSource(
+        impl: StudiesRemoteDataSourceImpl
+    ): StudiesRemoteDataSource
 }

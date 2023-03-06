@@ -6,7 +6,7 @@ import com.splanes.apps.skillbook.ui.common.base.BaseViewModel
 import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileAboutMeVisuals
 import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileContactVisuals
 import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileCurrentStatusVisuals
-import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileVisualsMapper
+import com.splanes.apps.skillbook.ui.feature.profile.model.mapper.ProfileVisualsMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

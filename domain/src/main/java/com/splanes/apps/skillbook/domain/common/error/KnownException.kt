@@ -6,5 +6,5 @@ object UnhandledError : KnownException()
 
 class ConfigFileNotFound(
     val filename: String,
-    override val message: String?
+    override val message: String? = null
 ) : KnownException(message)

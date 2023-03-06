@@ -1,9 +1,12 @@
-package com.splanes.apps.skillbook.ui.feature.profile.model
+package com.splanes.apps.skillbook.ui.feature.profile.model.mapper
 
 import com.splanes.apps.skillbook.domain.feature.profile.model.ProfileAboutMeData
 import com.splanes.apps.skillbook.domain.feature.profile.model.ProfileContactData
 import com.splanes.apps.skillbook.domain.feature.profile.model.ProfileCurrentStatus
 import com.splanes.apps.skillbook.domain.feature.profile.model.ProfileCurrentStatusData
+import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileAboutMeVisuals
+import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileContactVisuals
+import com.splanes.apps.skillbook.ui.feature.profile.model.ProfileCurrentStatusVisuals
 import com.splanes.apps.skillbook.ui.feature.workhistory.model.WorkSearchStateVisuals
 import com.splanes.apps.skillbook.ui.feature.workhistory.model.WorkVisuals
 import javax.inject.Inject

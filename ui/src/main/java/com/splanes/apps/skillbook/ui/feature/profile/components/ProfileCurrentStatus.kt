@@ -176,7 +176,7 @@ private fun WorkStatus(
             )
         ) {
             Column {
-                val end = visuals.endDate?.let { stringResource(id = R.string.present) }
+                val end = visuals.endDate ?: stringResource(id = R.string.present)
 
                 Text(
                     text = "${visuals.startDate} - $end",

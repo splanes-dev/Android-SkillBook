@@ -31,7 +31,7 @@ class ProfileRemoteDataSourceImpl @Inject constructor(
             )
         }
 
-        return profile ?: throw ConfigFileNotFound("profile", null)
+        return profile ?: throw ConfigFileNotFound(ProfileJson)
     }
 }
 
