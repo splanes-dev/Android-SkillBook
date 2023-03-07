@@ -10,6 +10,10 @@ import com.splanes.apps.skillbook.data.feature.studies.datasource.StudiesCacheDa
 import com.splanes.apps.skillbook.data.feature.studies.datasource.StudiesRemoteDataSource
 import com.splanes.apps.skillbook.data.feature.studies.datasource.impl.StudiesCache
 import com.splanes.apps.skillbook.data.feature.studies.datasource.impl.StudiesRemoteDataSourceImpl
+import com.splanes.apps.skillbook.data.feature.workhistory.datasource.WorkHistoryCacheDataSource
+import com.splanes.apps.skillbook.data.feature.workhistory.datasource.WorkHistoryRemoteDataSource
+import com.splanes.apps.skillbook.data.feature.workhistory.datasource.impl.WorkHistoryCache
+import com.splanes.apps.skillbook.data.feature.workhistory.datasource.impl.WorkHistoryRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -37,4 +41,12 @@ abstract class DataSourceModule {
     abstract fun bindStudiesRemoteDataSource(
         impl: StudiesRemoteDataSourceImpl
     ): StudiesRemoteDataSource
+
+    @Binds
+    abstract fun bindWorkHistoryCacheDataSource(cache: WorkHistoryCache): WorkHistoryCacheDataSource
+
+    @Binds
+    abstract fun bindWorkHistoryRemoteDataSource(
+        impl: WorkHistoryRemoteDataSourceImpl
+    ): WorkHistoryRemoteDataSource
 }
